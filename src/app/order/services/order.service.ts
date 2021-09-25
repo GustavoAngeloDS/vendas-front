@@ -1,32 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Order } from 'src/app/shared/models/order.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  url: string = ""
+  apiUrl: string = ""
   constructor(private httpClient: HttpClient) { }
 
-  allOrders() {
-
+  findAll(): Observable<Order> {
+    return this.httpClient.get<Order[]>(this.apiUrl)
   }
 
-  newOrder() {
-
+  save(order: Order): Observable<Order> {
+    return this.httpClient.post<Order>(this.apiUrl, order)
   }
 
-  updateOrder() {
-
+  update(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(this.apiUrl, order)
   }
 
-  removeOrder() {
-
+  delete(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`)
   }
 
-  orderById(id: number) {
-
+  findById(id: number): Observable<Order> {
+    return this.httpClient.get<Order>(`${this.apiUrl}/${id}`)
   }
-
 
 }
