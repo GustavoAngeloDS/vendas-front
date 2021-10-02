@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   public searchClient() {
-    console.log(this.cpfInput.nativeElement.value);
+    const cpf = this.cpfInput.nativeElement.value.replace(/[^\w\s]/gi, '');
+    console.log(cpf);
   }
 }

@@ -50,15 +50,16 @@
           #cpfInput
           class="form-control me-2"
           type="search"
-          placeholder="CPF do Cliente"
-          mask="000.000.000-00||00.000.000/0000-00"
+          placeholder="Digite o CPF do Cliente"
+          mask="000.000.000-00"
+          maxlength="14"
         />
         <button
           class="btn btn-outline-primary"
           type="button"
           (click)="searchClient()"
         >
-          Pesquisar Pedidos
+          Consultar Pedidos
         </button>
       </form>
     </div>
