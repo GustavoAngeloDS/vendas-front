@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { OrderModule } from './order/order.module';
 import { ProductModule } from './product';
 import { SharedModule } from './shared';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,6 +16,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
   declarations: [AppComponent, NavbarComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    OrderModule,
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
