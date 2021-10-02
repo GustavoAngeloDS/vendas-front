@@ -22,7 +22,7 @@
       >
         Descrição
       </th>
-      <th class="text-center">Opções ...</th>
+      <th class="text-center">Ações</th>
     </tr>
   </thead>
   <tbody class="align-middle">
@@ -31,14 +31,16 @@
       <td scope="row">{{ product.description }}</td>
       <td scope="row" class="text-center">
         <button class="btn btn-xs btn-info" (click)="editProduct(product)">
-          <i class="fa fa-edit" aria-hidden="true"></i> Editar
+          <i class="fa fa-edit" aria-hidden="true"></i> 
+          Editar
         </button>
-        <a
-          class="btn btn-xs btn-danger"
-          href="#"
-          (click)="deleteProduct($event, product)"
-          ><i class="fa fa-times" aria-hidden="true"></i> Excluir</a
-        >
+        <a class="btn btn-xs btn-danger" href="#" (click)="deleteProduct($event, product)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+          Remover
+        </a>
+        <button type="button" class="btn btn-xs btn-info" (click)="openProductDetailsModal(product)">
+          <i class="fa fa-eye" aria-hidden="true"></i> Exibir
+        </button>
       </td>
     </tr>
   </tbody>
