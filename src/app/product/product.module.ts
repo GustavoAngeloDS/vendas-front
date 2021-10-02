@@ -9,16 +9,16 @@ import { SharedModule } from '../shared';
 import { ProductService } from './services';
 
 import { CreateProductComponent } from './create-product';
-import { UpdateProductComponent } from './update-product';
 import { ListProductComponent } from './list-product';
 import { ModalProductComponent } from './modal-product';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
     ListProductComponent,
     CreateProductComponent,
-    UpdateProductComponent,
     ModalProductComponent,
+    EditProductComponent,
   ],
   imports: [
     CommonModule,
