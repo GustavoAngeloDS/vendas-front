@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NewOrderComponent } from './order/new-order/new-order.component';
+import { OrderEditComponent } from './order/order-edit/order-edit.component';
+import { OrderListComponent } from './order/order-list/order-list.component';
 
 import {
   CreateProductComponent,
@@ -53,15 +56,15 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ListProductComponent,
+        component: OrderListComponent,
       },
       {
         path: 'edit/:id',
-        component: EditProductComponent,
+        component: OrderEditComponent,
       },
       {
         path: 'new',
-        component: CreateProductComponent,
+        component: NewOrderComponent,
       },
     ],
   },
