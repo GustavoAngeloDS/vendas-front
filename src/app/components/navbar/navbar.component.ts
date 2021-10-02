@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { OrderService } from 'src/app/order/services/order.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,14 +7,13 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  @ViewChild('cpfInput') cpfInput!: ElementRef;
-
-  constructor() {}
+  constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {}
 
-  public searchClient() {
-    const cpf = this.cpfInput.nativeElement.value.replace(/[^\w\s]/gi, '');
-    console.log(cpf);
+  public searchClient(cpf: string): void {
+    var cleanCpf = cpf.replace(/[^\w\s]/gi, '');
+    this.orderService.findByCpf(cleanCpf);
+    // TODO: Open modal with order modal with client orders
   }
 }

@@ -48,16 +48,17 @@
       <form class="d-flex">
         <input
           #cpfInput
+          type="text"
           class="form-control me-2"
-          type="search"
           placeholder="Informe o CPF do cliente"
+          minlength="14"
+          required
           mask="000.000.000-00"
-          maxlength="14"
         />
         <button
-          class="btn btn-outline-primary"
+          class="btn btn-outline-light text-nowrap"
           type="button"
-          (click)="searchClient()"
+          (click)="searchClient(cpfInput.value)"
         >
           Consultar Pedidos
         </button>
