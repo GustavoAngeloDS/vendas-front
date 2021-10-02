@@ -1,1 +1,18 @@
 <p>create-product works!</p>
+
+<!-- Form for creating new product with product name -->
+<form #formProduct="ngForm">
+  <div class="form-group">
+    <label for="description">Descrição</label>
+    <input
+      type="text"
+      class="form-control"
+      id="productDescription"
+      [(ngModel)]="product.description"
+      placeholder="Digite a descrição do produto"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" onclick="onSubmit()">
+    Submit
+  </button>
+</form>

@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ListProductComponent } from './product/list-product';
+import {
+  CreateProductComponent,
+  ListProductComponent,
+  EditProductComponent,
+} from './product';
 
 const routes: Routes = [
   {
@@ -12,7 +16,20 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ListProductComponent,
+    children: [
+      {
+        path: '',
+        component: ListProductComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditProductComponent,
+      },
+      {
+        path: 'new',
+        component: CreateProductComponent,
+      },
+    ],
   },
   {
     path: '**',
