@@ -48,8 +48,7 @@ export class EditProductComponent implements OnInit {
   public onSubmit() {
     if (this.formProduct.valid) {
       this.updateProduct(this.product);
+      this.router.navigate(['/products']);
     }
-    this.formProduct.reset();
-    this.router.navigate(['/products']);
   }
 }

@@ -1,1 +1,41 @@
-<p>edit-product works!</p>
+<h3>Editar "{{ product.description }}"</h3>
+
+<div class="well">
+  <form #formProduct="ngForm">
+    <div class="form-group">
+      <label for="description">Descrição</label>
+      <input
+        [(ngModel)]="product.description"
+        #description="ngModel"
+        type="text"
+        class="form-control"
+        id="productDescription"
+        placeholder="Digite a descrição do produto"
+        minlength="3"
+        required
+      />
+      <div
+        *ngIf="description.errors && (description.dirty || description.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!description.errors.required">
+          Digite a descrição do produto.
+        </div>
+        <div [hidden]="!description.errors.minlength">
+          A descrição deve contem pelo menos 3 caracteres.
+        </div>
+      </div>
+    </div>
+    <button
+      [disabled]="!formProduct.form.valid"
+      type="button"
+      class="btn btn-primary"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+    <a href="#" class="btn btn-secondary" [routerLink]="['/products']">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+    </a>
+  </form>
+</div>

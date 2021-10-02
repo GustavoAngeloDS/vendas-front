@@ -31,9 +31,9 @@ export class CreateProductComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (this.formProduct.valid) {
+    if (this.formProduct.form.valid) {
       this.createProduct(this.product);
+      this.router.navigate(['/products']);
     }
-    this.router.navigate(['/products']);
   }
 }
