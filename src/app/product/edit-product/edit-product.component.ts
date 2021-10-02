@@ -23,7 +23,7 @@ export class EditProductComponent implements OnInit {
     this.getProduct(this.route.snapshot.params.id);
   }
 
-  getProduct(id: number) {
+  private getProduct(id: number) {
     this.productService.getProduct(id).subscribe(
       (product: Product) => {
         this.product = product;
@@ -37,6 +37,7 @@ export class EditProductComponent implements OnInit {
   private updateProduct(product: Product) {
     this.productService.updateProduct(product).subscribe(
       (product: Product) => {
+        console.log(product);
         this.product = product;
       },
       (error) => {

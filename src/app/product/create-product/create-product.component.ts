@@ -21,9 +21,7 @@ export class CreateProductComponent implements OnInit {
 
   private createProduct(product: Product): void {
     this.productService.createProduct(product).subscribe(
-      (product: Product) => {
-        this.product = product;
-      },
+      () => {},
       (error: any) => {
         alert(error.message);
       }
@@ -33,7 +31,11 @@ export class CreateProductComponent implements OnInit {
   public onSubmit(): void {
     if (this.formProduct.form.valid) {
       this.createProduct(this.product);
-      this.router.navigate(['/products']);
+      this.handleSuccess();
     }
+  }
+
+  private handleSuccess(): void {
+    this.router.navigate(['/products']);
   }
 }
