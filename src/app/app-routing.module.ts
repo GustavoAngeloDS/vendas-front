@@ -32,6 +32,40 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'clients',
+    children: [
+      {
+        path: '',
+        component: ListProductComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditProductComponent,
+      },
+      {
+        path: 'new',
+        component: CreateProductComponent,
+      },
+    ],
+  },
+  {
+    path: 'orders',
+    children: [
+      {
+        path: '',
+        component: ListProductComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditProductComponent,
+      },
+      {
+        path: 'new',
+        component: CreateProductComponent,
+      },
+    ],
+  },
+  {
     path: '**',
     redirectTo: '',
   },
