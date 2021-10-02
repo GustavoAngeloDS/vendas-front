@@ -34,7 +34,8 @@ export class ProductService {
   public deleteProduct(product: Product): Observable<any> {
     return this.http.delete<void>(this.apiUrl, {
       body: {
-        product,
+        id: product.id,
+        description: product.description,
       },
     });
   }

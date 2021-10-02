@@ -1,4 +1,4 @@
-<h3>Cadastrar produto</h3>
+<h3>Editar "{{ product.description }}"</h3>
 
 <div class="well">
   <form #formProduct="ngForm">
@@ -29,11 +29,14 @@
     </div>
     <button
       [disabled]="!formProduct.form.valid"
-      (click)="onSubmit()"
       type="button"
       class="btn btn-primary"
+      (click)="onSubmit()"
     >
-      Enviar
+      Submit
     </button>
+    <a href="#" class="btn btn-secondary" [routerLink]="['/products']">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+    </a>
   </form>
 </div>
