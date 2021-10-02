@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
+// Pipes
 
+// Directives
+import { SortDirective } from './directives';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [SortDirective],
+  exports: [SortDirective],
 })
-export class SharedModule { }
+export class SharedModule {}

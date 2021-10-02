@@ -11,8 +11,17 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Descrição</th>
+      <th scope="col" [appSort]="products" data-order="desc" data-name="id">
+        ID
+      </th>
+      <th
+        scope="col"
+        [appSort]="products"
+        data-order="desc"
+        data-name="description"
+      >
+        Descrição
+      </th>
       <th class="text-center">Opções ...</th>
     </tr>
   </thead>
