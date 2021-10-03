@@ -45,6 +45,24 @@
           >
         </li>
       </ul>
+      <form class="d-flex">
+        <input
+          #cpfInput
+          type="text"
+          class="form-control me-2"
+          placeholder="Informe o CPF do cliente"
+          minlength="14"
+          required
+          mask="000.000.000-00"
+        />
+        <button
+          class="btn btn-outline-light text-nowrap"
+          type="button"
+          (click)="searchClient(cpfInput.value)"
+        >
+          Consultar Pedidos
+        </button>
+      </form>
     </div>
   </div>
 </nav>

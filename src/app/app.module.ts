@@ -8,6 +8,9 @@ import { OrderModule } from './order/order.module';
 import { ProductModule } from './product';
 import { SharedModule } from './shared';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -19,6 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AppRoutingModule,
     SharedModule,
     ProductModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
