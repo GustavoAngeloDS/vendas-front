@@ -1,1 +1,47 @@
-<p>list-client works!</p>
+<div class="d-flex justify-content-between" id="main-content">
+    <h1>Clientes</h1>
+    <button
+      class="btn btn-success d-flex align-items-center"
+      (click)="createClient()">
+      <i class="fa fa-plus" style="margin-right: 5px"></i>Adicionar
+    </button>
+  </div>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" [appSort]="clients" data-order="desc" data-name="cpf">
+          CPF
+        </th>
+        <th scope="col" [appSort]="clients" data-order="desc" data-name="name">
+          Nome
+        </th>
+        <th scope="col" [appSort]="clients" data-order="desc" data-name="lastname">
+          Sobrenome
+        </th>
+        <th class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody class="align-middle">
+      <tr *ngFor="let client of clients">
+        <td scope="row">{{ client.cpf }}</td>
+        <td scope="row">{{ client.name }}</td>
+        <td scope="row">{{ client.lastname }}</td>
+        <td scope="row" class="text-center">
+          <button class="btn btn-xs btn-info" (click)="editClient(client)">
+            <i class="fa fa-edit" aria-hidden="true"></i> 
+            Editar
+          </button>
+          <a class="btn btn-xs btn-danger" href="#" (click)="deleteClient($event, client)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            Remover
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="alert alert-danger" *ngIf="!clients || clients?.length == 0">
+    Nenhum cliente encontrado!
+  </div>
+  

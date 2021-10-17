@@ -1,0 +1,51 @@
+<div class="d-flex justify-content-between" id="main-content">
+  <h1>Produtos</h1>
+  <button
+    class="btn btn-success d-flex align-items-center"
+    (click)="createProduct()"
+  >
+    <i class="fa fa-plus" style="margin-right: 5px"></i>Adicionar
+  </button>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" [appSort]="products" data-order="desc" data-name="id">
+        ID
+      </th>
+      <th
+        scope="col"
+        [appSort]="products"
+        data-order="desc"
+        data-name="description"
+      >
+        Descrição
+      </th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+  <tbody class="align-middle">
+    <tr *ngFor="let product of products">
+      <td scope="row">{{ product.id }}</td>
+      <td scope="row">{{ product.description }}</td>
+      <td scope="row" class="text-center">
+        <button class="btn btn-xs btn-info" (click)="editProduct(product)">
+          <i class="fa fa-edit" aria-hidden="true"></i> 
+          Editar
+        </button>
+        <a class="btn btn-xs btn-danger" href="#" (click)="deleteProduct($event, product)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+          Remover
+        </a>
+        <button type="button" class="btn btn-xs btn-info" (click)="openProductDetailsModal(product)">
+          <i class="fa fa-eye" aria-hidden="true"></i> Exibir
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-danger" *ngIf="!products || products?.length == 0">
+  Nenhum produto encontrado!
+</div>

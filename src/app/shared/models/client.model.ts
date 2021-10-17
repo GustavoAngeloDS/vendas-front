@@ -1,8 +1,8 @@
 export class Client {
-    constructor(
-        public id?: number,
-        public cpf?: string,
-        public name?: string,
-        public lastname?: string
-    ) {}
+  constructor(
+    public id?: number,
+    public cpf?: string,
+    public name?: string,
+    public lastname?: string
+  ) {}
 }
