@@ -38,7 +38,7 @@ export class ListClientComponent implements OnInit {
       this.clientService.deleteClient(client).subscribe(() => {
           this.clients = this.clients.filter((c) => c.id !== client.id);
         }, (error) => {
-          alert(error.message);
+          alert(error.error.message);
         }
       );
     }

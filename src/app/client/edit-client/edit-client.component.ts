@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/shared';
 import { ClientService } from '../services';
+import { cpf } from 'cpf-cnpj-validator';
 
 @Component({
   selector: 'app-edit-client',
@@ -36,14 +37,21 @@ export class EditClientComponent implements OnInit {
   }
 
   private updateClient(client: Client){
-    this.clientService.updateClient(client).subscribe(
-      (client: Client) => {
-        this.client = client;
-      },
-      (error) => {
-        alert(error.error.message);
-      }
-    );
+    if (client.cpf !== null && 
+        client.cpf !== undefined && 
+        cpf.isValid(client.cpf)) {
+          
+      this.clientService.updateClient(client).subscribe(
+        (client: Client) => {
+          this.client = client;
+        },
+        (error) => {
+          alert(error.error.message);
+        }
+      );
+    } else {
+      alert("CPF inválido");
+    }
   }
 
   public onSubmit() {

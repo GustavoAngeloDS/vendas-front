@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/shared';
 import { ClientService } from '../services';
+import { cpf } from 'cpf-cnpj-validator';
 
 @Component({
   selector: 'app-create-client',
@@ -23,14 +24,21 @@ export class CreateClientComponent implements OnInit {
   }
 
   private createClient(client: Client): void {
-    this.clientService.createClient(client).subscribe(() => 
-      {
-        this.router.navigate(['/clients']);
-      }, 
-      (error: any) => {
-        alert(error.error.message);
-      }
-    );
+    if (client.cpf !== null && 
+        client.cpf !== undefined && 
+        cpf.isValid(client.cpf)) {
+          
+      this.clientService.createClient(client).subscribe(() => 
+        {
+          this.router.navigate(['/clients']);
+        }, 
+        (error: any) => {
+          alert(error.error.message);
+        }
+      );
+    } else {
+      alert("CPF inválido");
+    }
   }
 
   public onSubmit(): void {

@@ -13,6 +13,7 @@
             [(ngModel)]="client.cpf"
             #cpf="ngModel"
             mask="000.000.000-99" [showMaskTyped]="true" [dropSpecialCharacters]="false"
+        
             required/>
         <div *ngIf="cpf.errors && (cpf.dirty || cpf.touched)" class="alert alert-danger">
             <div [hidden]="!cpf.errors.required">
