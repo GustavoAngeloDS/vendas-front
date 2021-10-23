@@ -12,15 +12,12 @@
             placeholder="Digite o CPF do cliente"
             [(ngModel)]="client.cpf"
             #cpf="ngModel"
-            mask="000.000.000-99" [showMaskTyped]="true" [dropSpecialCharacters]="false"
-        
+            mask="000.000.000-99" [showMaskTyped]="true" [dropSpecialCharacters]="false" 
+            (blur)="onCpfBlur()"
             required/>
         <div *ngIf="cpf.errors && (cpf.dirty || cpf.touched)" class="alert alert-danger">
             <div [hidden]="!cpf.errors.required">
                 Digite o CPF do cliente.
-            </div>
-            <div [hidden]="!cpf.errors.minlength">
-                O CPF deve conter 11 números.
             </div>
         </div>
     </div>
@@ -73,5 +70,8 @@
       (click)="onSubmit()">
       Salvar
     </button>
+    <a href="#" class="btn btn-secondary" [routerLink]="['/clients']">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+      </a>
   </form>
 </div>

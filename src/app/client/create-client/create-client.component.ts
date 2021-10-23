@@ -23,27 +23,28 @@ export class CreateClientComponent implements OnInit {
     this.client = new Client();
   }
 
-  private createClient(client: Client): void {
-    if (client.cpf !== null && 
-        client.cpf !== undefined && 
-        cpf.isValid(client.cpf)) {
-          
-      this.clientService.createClient(client).subscribe(() => 
-        {
-          this.router.navigate(['/clients']);
-        }, 
-        (error: any) => {
-          alert(error.error.message);
-        }
-      );
-    } else {
-      alert("CPF inválido");
-    }
+  private createClient(client: Client): void {    
+    this.clientService.createClient(client).subscribe(() => 
+      {
+        this.router.navigate(['/clients']);
+      }, 
+      (error: any) => {
+        alert(error.error.message);
+      }
+    );
   }
 
   public onSubmit(): void {
     if (this.formClient.form.valid) {
       this.createClient(this.client);
+    }
+  }
+
+  public onCpfBlur(): void {
+    let clientCPF = this.client.cpf;
+
+    if (clientCPF !== null && clientCPF !== undefined && !cpf.isValid(clientCPF)) {
+        alert("CPF inválido");
     }
   }
 }
