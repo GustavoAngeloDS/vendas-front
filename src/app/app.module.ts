@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { ClientModule } from './client/client.module';
 import { OrderModule } from './order/order.module';
 import { ProductModule } from './product';
 import { SharedModule } from './shared';
@@ -17,12 +19,13 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ClientModule,
     OrderModule,
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
     ProductModule,
-    NgxMaskModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
