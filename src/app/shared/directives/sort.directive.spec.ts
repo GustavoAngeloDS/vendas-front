@@ -1,8 +1,10 @@
+import { ElementRef } from '@angular/core';
 import { SortDirective } from './sort.directive';
 
 describe('SortDirective', () => {
   it('should create an instance', () => {
-    const directive = new SortDirective();
+    let targetElement: ElementRef = new ElementRef("");
+    const directive = new SortDirective(targetElement);
     expect(directive).toBeTruthy();
   });
 });
