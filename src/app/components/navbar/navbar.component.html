@@ -19,29 +19,29 @@
             class="nav-link"
             [routerLinkActive]="['active']"
             [routerLinkActiveOptions]="{ exact: true }"
+            [routerLink]="['orders']"
+            href="/orders"
+            ><i class="fas fa-truck"></i> Pedidos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLink]="['clients']"
+          href="#"
+          ><i class="fas fa-user"></i> Clientes</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }"
             [routerLink]="['products']"
             href="#"
             ><i class="fas fa-box-open"></i> Produtos</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLinkActive]="['active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-            [routerLink]="['clients']"
-            href="#"
-            ><i class="fas fa-user"></i> Clientes</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLinkActive]="['active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-            [routerLink]="['orders']"
-            href="#"
-            ><i class="fas fa-truck"></i> Pedidos</a
           >
         </li>
       </ul>

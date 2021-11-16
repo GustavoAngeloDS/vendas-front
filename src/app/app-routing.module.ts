@@ -7,12 +7,17 @@ import {
   EditProductComponent,
 } from './product';
 
+import {
+  NewOrderComponent,
+  OrderEditComponent,
+  OrderListComponent
+} from './order'
+
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    // TODO: INSERT HOMEPAGE COMPONENT HERE
-    component: ListProductComponent,
+    component: OrderListComponent,
   },
   {
     path: 'products',
@@ -28,6 +33,23 @@ const routes: Routes = [
       {
         path: 'new',
         component: CreateProductComponent,
+      },
+    ],
+  },
+  {
+    path:'orders',
+    children: [
+      {
+        path: '',
+        component: OrderListComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: OrderEditComponent,
+      },
+      {
+        path: 'new',
+        component: NewOrderComponent,
       },
     ],
   },
