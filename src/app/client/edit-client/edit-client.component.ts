@@ -36,28 +36,29 @@ export class EditClientComponent implements OnInit {
     );
   }
 
-  private updateClient(client: Client){
-    if (client.cpf !== null && 
-        client.cpf !== undefined && 
-        cpf.isValid(client.cpf)) {
-          
-      this.clientService.updateClient(client).subscribe(
-        (client: Client) => {
-          this.client = client;
-        },
-        (error) => {
-          alert(error.error.message);
-        }
-      );
-    } else {
-      alert("CPF inválido");
-    }
+  private updateClient(client: Client){          
+    this.clientService.updateClient(client).subscribe(
+      (client: Client) => {
+        this.client = client;
+        this.router.navigate(['/clients']);
+      },
+      (error) => {
+        alert(error.error.message);
+      }
+    );
   }
 
   public onSubmit() {
     if (this.formClient.valid) {
       this.updateClient(this.client);
-      this.router.navigate(['/clients']);
+    }
+  }
+
+  public onCpfBlur(): void {
+    let clientCPF = this.client.cpf;
+
+    if (clientCPF !== null && clientCPF !== undefined && !cpf.isValid(clientCPF)) {
+        alert("CPF inválido");
     }
   }
 }
