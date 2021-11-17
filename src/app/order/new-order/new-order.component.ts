@@ -49,7 +49,7 @@ export class NewOrderComponent implements OnInit {
       this.orderService.save(this.order).subscribe((order: Order) => {
         this.toastService.show("Pedido criado com sucesso.",
           {
-            delay: 5000,
+            delay: 2000,
             autohide: true
           }
         )
@@ -184,7 +184,7 @@ export class NewOrderComponent implements OnInit {
     let client: Client = {
       id: $event.item.id,
       name: $event.item.name,
-      lastName: $event.item.lastname,
+      lastname: $event.item.lastname,
       cpf: $event.item.cpf
     }
     this.order.client = client

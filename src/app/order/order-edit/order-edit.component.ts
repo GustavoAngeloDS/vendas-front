@@ -1,3 +1,4 @@
+import { NavbarService } from './../../_services/navbar/navbar.service';
 import { ToastService } from './../../_services/toast/toast.service';
 import { pipe } from 'rxjs/internal/util/pipe';
 import { Product } from './../../shared/models/product.model';
@@ -33,8 +34,11 @@ export class OrderEditComponent implements OnInit {
     private orderService: OrderService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastService: ToastService
-    ) { }
+    private toastService: ToastService,
+    private navbarService: NavbarService
+    ) {
+      this.navbarService.getInputSearchChange(false);
+    }
 
   ngOnInit(): void {
     this.order.client = new Client()
@@ -53,7 +57,7 @@ export class OrderEditComponent implements OnInit {
       this.orderService.update(this.order).subscribe((order: Order) => {
         this.toastService.show("Pedido atualizado com sucesso.",
           {
-            delay: 5000,
+            delay: 2000,
             autohide: true
           }
         )

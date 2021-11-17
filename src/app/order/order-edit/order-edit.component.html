@@ -107,7 +107,7 @@
               <span contenteditable="false" (blur)="updateList(id, 'description', $event)">{{person.product!.description}}</span>
             </td>
             <td>
-              <span contenteditable="true" (blur)="updateList(id, 'qtdade', $event)">{{person.qtdade}}</span>
+              <span contenteditable="true" (blur)="updateList(id, 'qtdade', $event)" class="border border-dark rounded">{{person.qtdade}}</span>
             </td>
             <td>
               <span class="table-remove">

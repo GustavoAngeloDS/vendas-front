@@ -8,22 +8,10 @@
 </button>
 </div>
 
-<fieldset class="form-inline">
-  <div class="form-group">
-    <label for="typeahead-http">Buscar pedidos</label>
-    <input name="name" id="typeahead-http" type="text" class="form-control mx-sm-3" [class.is-invalid]="notFound" (selectItem)="selectedClient($event)" [(ngModel)]="clients" [ngbTypeahead]="search" [resultFormatter]="clientFormat" [inputFormatter]="clientFormat" placeholder="Nome ou CPF" />
-    <small *ngIf="searching" class="form-text text-muted">...</small>
-    <button type="button" class="btn-close" aria-label="Close" *ngIf="clients" (click)="getAllOrders()"></button>
-    <div class="invalid-feedback" *ngIf="notFound">Cliente não encontrado.</div>
-  </div>
-</fieldset>
 <br>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col" [appSort]="orders" data-order="desc" data-name="id">
-        ID
-      </th>
       <th
         scope="col"
         [appSort]="orders"
@@ -54,7 +42,6 @@
   </thead>
   <tbody class="align-middle">
     <tr *ngFor="let order of orders">
-      <td scope="row">{{ order.id }}</td>
       <td scope="row">{{ order.client!.name }}</td>
       <td scope="row">{{ order.client!.cpf }}</td>
       <td scope="row">{{ order.date }}</td>

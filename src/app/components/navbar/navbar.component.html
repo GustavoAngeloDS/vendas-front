@@ -45,6 +45,14 @@
           >
         </li>
       </ul>
+        <fieldset class="form-inline" *ngIf="showInputSearch">
+          <div class="form-group">
+            <label for="typeahead-http">Buscar pedidos</label>
+            <input name="name" id="typeahead-http" type="text" class="form-control mx-sm-3" [class.is-invalid]="notFound" (selectItem)="selectedClient($event)" [(ngModel)]="clients" [ngbTypeahead]="search" [resultFormatter]="clientFormat" [inputFormatter]="clientFormat" placeholder="Nome ou CPF" />
+            <small *ngIf="searching" class="form-text text-muted">...</small>
+            <button type="button" class="btn-close" aria-label="Close" *ngIf="clients" (click)="getAllOrders()"></button>
+          </div>
+        </fieldset>
     </div>
   </div>
 </nav>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateClientComponent, EditClientComponent, ListClientComponent } from './client';
 
 import {
   CreateProductComponent,
@@ -37,7 +38,24 @@ const routes: Routes = [
     ],
   },
   {
-    path:'orders',
+    path: 'clients',
+    children: [
+      {
+        path: '',
+        component: ListClientComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditClientComponent,
+      },
+      {
+        path: 'new',
+        component: CreateClientComponent,
+      },
+    ],
+  },
+  {
+    path: 'orders',
     children: [
       {
         path: '',

@@ -5,19 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { OrderModule } from './order';
 import { ProductModule } from './product';
 import { SharedModule } from './shared';
-import { NgbToastModule  } from '@ng-bootstrap/ng-bootstrap';
+import { NgbToastModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule, MDBRootModule } from 'angular-bootstrap-md';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ToastComponent } from './components/toast/toast.component';
-
+import { ClientModule } from './client';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, ToastComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ClientModule,
     OrderModule,
     HttpClientModule,
     AppRoutingModule,
@@ -25,7 +27,10 @@ import { ToastComponent } from './components/toast/toast.component';
     ProductModule,
     BrowserAnimationsModule,
     NgbToastModule,
-    MDBRootModule
+    MDBRootModule,
+    MDBBootstrapModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

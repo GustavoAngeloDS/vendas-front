@@ -1,7 +1,10 @@
+import { NavbarService } from './../../_services/navbar/navbar.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Product } from 'src/app/shared';
+import { ModalProductComponent } from '..';
 import { ProductService } from '../services';
 
 @Component({
@@ -12,7 +15,14 @@ import { ProductService } from '../services';
 export class ListProductComponent implements OnInit {
   public products!: Product[];
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private modalService: NgbModal,
+    private navbarService: NavbarService,
+    ) {
+      this.navbarService.getInputSearchChange(false);
+    }
 
   ngOnInit(): void {
     this.listProducts();
@@ -53,5 +63,11 @@ export class ListProductComponent implements OnInit {
 
   public createProduct(): void {
     this.router.navigate(['/products/new']);
+  }
+
+
+  openProductDetailsModal(product: Product){
+    const modalRef = this.modalService.open(ModalProductComponent);
+    modalRef.componentInstance.product = product;
   }
 }

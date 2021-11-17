@@ -1,13 +1,13 @@
 import { Product } from './../../shared/models/product.model';
 import { Client } from './../../shared/models/client.model';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Order } from 'src/app/shared/models/order.model';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderService {
   private apiUrl: string = `${environment.apiUrl}`;
@@ -43,8 +43,8 @@ export class OrderService {
     return this.httpClient.get<Order>(`${this.apiUrl}/orders/${id}`)
   }
 
-  findByCpf(client: Client): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(`${this.apiUrl}/orders/cpf/${client.cpf}`)
+  findByCpf(cpf: string): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`${this.apiUrl}/orders/cpf/${cpf}`)
   }
 
 }
