@@ -13,9 +13,6 @@ import { EventEmitter } from '@angular/core';
   styles: [`.form-control { width: 300px; }`]
 })
 export class OrderListComponent implements OnInit {
-  @Input() clientOrderResult: Order[] = []
-  @Output() searchResponse = new EventEmitter()
-
   orders!: Order[];
   clients!: any;
   searchFailed = false;
