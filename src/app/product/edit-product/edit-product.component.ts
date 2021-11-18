@@ -41,14 +41,17 @@ export class EditProductComponent implements OnInit {
       },
       (error) => {
         alert(error.message);
-      }
+      },
+      () => this.returnSessionToProductsList()
     );
   }
 
   public onSubmit() {
-    if (this.formProduct.valid) {
+    if (this.formProduct.valid) 
       this.updateProduct(this.product);
-      this.router.navigate(['/products']);
-    }
+  }
+
+  private returnSessionToProductsList(): void {
+    this.router.navigate(['/products']);
   }
 }
