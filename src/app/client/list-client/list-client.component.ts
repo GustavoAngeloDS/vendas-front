@@ -1,3 +1,4 @@
+import { NavbarService } from './../../_services/navbar/navbar.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/shared';
@@ -13,8 +14,11 @@ export class ListClientComponent implements OnInit {
 
   constructor(
     private clientService: ClientService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private navbarService: NavbarService,
+  ) {
+    this.navbarService.getInputSearchChange(false);
+  }
 
   ngOnInit(): void {
     this.listClients();

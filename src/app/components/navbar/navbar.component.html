@@ -19,50 +19,40 @@
             class="nav-link"
             [routerLinkActive]="['active']"
             [routerLinkActiveOptions]="{ exact: true }"
+            [routerLink]="['orders']"
+            href="/orders"
+            ><i class="fas fa-truck"></i> Pedidos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLink]="['clients']"
+          href="#"
+          ><i class="fas fa-user"></i> Clientes</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }"
             [routerLink]="['products']"
             href="#"
             ><i class="fas fa-box-open"></i> Produtos</a
           >
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLinkActive]="['active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-            [routerLink]="['clients']"
-            href="#"
-            ><i class="fas fa-user"></i> Clientes</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLinkActive]="['active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-            [routerLink]="['orders']"
-            href="#"
-            ><i class="fas fa-truck"></i> Pedidos</a
-          >
-        </li>
       </ul>
-      <form class="d-flex">
-        <input
-          #cpfInput
-          type="text"
-          class="form-control me-2"
-          placeholder="Informe o CPF do cliente"
-          minlength="14"
-          required
-          mask="000.000.000-00"
-        />
-        <button
-          class="btn btn-outline-light text-nowrap"
-          type="button"
-          (click)="searchClient(cpfInput.value)"
-        >
-          Consultar Pedidos
-        </button>
-      </form>
+        <fieldset class="form-inline" *ngIf="showInputSearch">
+          <div class="form-group">
+            <label for="typeahead-http">Buscar pedidos</label>
+            <input name="name" id="typeahead-http" type="text" class="form-control mx-sm-3" [class.is-invalid]="notFound" (selectItem)="selectedClient($event)" [(ngModel)]="clients" [ngbTypeahead]="search" [resultFormatter]="clientFormat" [inputFormatter]="clientFormat" placeholder="Nome ou CPF" />
+            <small *ngIf="searching" class="form-text text-muted">...</small>
+            <button type="button" class="btn-close" aria-label="Close" *ngIf="clients" (click)="getAllOrders()"></button>
+          </div>
+        </fieldset>
     </div>
   </div>
 </nav>

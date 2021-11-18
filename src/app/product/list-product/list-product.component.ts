@@ -1,3 +1,4 @@
+import { NavbarService } from './../../_services/navbar/navbar.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +15,14 @@ import { ProductService } from '../services';
 export class ListProductComponent implements OnInit {
   public products!: Product[];
 
-  constructor(private productService: ProductService, private router: Router, private modalService: NgbModal) {}
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private modalService: NgbModal,
+    private navbarService: NavbarService,
+    ) {
+      this.navbarService.getInputSearchChange(false);
+    }
 
   ngOnInit(): void {
     this.listProducts();
@@ -57,7 +65,7 @@ export class ListProductComponent implements OnInit {
     this.router.navigate(['/products/new']);
   }
 
-  
+
   openProductDetailsModal(product: Product){
     const modalRef = this.modalService.open(ModalProductComponent);
     modalRef.componentInstance.product = product;

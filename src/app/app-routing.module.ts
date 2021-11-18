@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateClientComponent, EditClientComponent, ListClientComponent } from './client';
-import { NewOrderComponent } from './order/new-order/new-order.component';
-import { OrderEditComponent } from './order/order-edit/order-edit.component';
-import { OrderListComponent } from './order/order-list/order-list.component';
 
 import {
   CreateProductComponent,
@@ -11,12 +8,17 @@ import {
   EditProductComponent,
 } from './product';
 
+import {
+  NewOrderComponent,
+  OrderEditComponent,
+  OrderListComponent
+} from './order'
+
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    // TODO: INSERT HOMEPAGE COMPONENT HERE
-    component: ListProductComponent,
+    component: OrderListComponent,
   },
   {
     path: 'products',

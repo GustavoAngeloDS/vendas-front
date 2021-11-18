@@ -1,20 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderListComponent } from './order-list/order-list.component';
-import { OrderEditComponent } from './order-edit/order-edit.component';
-import { NewOrderComponent } from './new-order/new-order.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { SharedModule } from '../shared';
 
-
+import { OrderService } from './services';
+import { OrderListComponent } from './order-list';
+import { OrderEditComponent } from './order-edit';
+import { NewOrderComponent } from './new-order';
 
 @NgModule({
   declarations: [
+    NewOrderComponent,
     OrderListComponent,
     OrderEditComponent,
-    NewOrderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    SharedModule,
+    RouterModule,
+    NgbTypeaheadModule,
+    MDBBootstrapModule,
   ],
-  exports:[OrderListComponent, OrderEditComponent, NewOrderComponent]
+  providers: [OrderService],
 })
 export class OrderModule { }
