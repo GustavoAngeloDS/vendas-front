@@ -24,18 +24,17 @@ export class CreateProductComponent implements OnInit {
       () => {},
       (error: any) => {
         alert(error.message);
-      }
+      },
+      () => this.returnSessionToProductsList()
     );
   }
 
   public onSubmit(): void {
-    if (this.formProduct.form.valid) {
+    if (this.formProduct.form.valid) 
       this.createProduct(this.product);
-      this.handleSuccess();
-    }
   }
 
-  private handleSuccess(): void {
+  private returnSessionToProductsList(): void {
     this.router.navigate(['/products']);
   }
 }
