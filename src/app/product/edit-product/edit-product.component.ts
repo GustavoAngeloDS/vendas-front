@@ -47,7 +47,7 @@ export class EditProductComponent implements OnInit {
   }
 
   public onSubmit() {
-    if (this.formProduct.valid) 
+    if (this.formProduct.valid)
       this.updateProduct(this.product);
   }
 

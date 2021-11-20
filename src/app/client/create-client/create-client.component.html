@@ -5,14 +5,14 @@
     <div class="form-group">
         <label for="cpf">CPF</label>
         <input
-            id="cpf"  
+            id="cpf"
             type="text"
             name="cpf"
             class="form-control"
             placeholder="Digite o CPF do cliente"
             [(ngModel)]="client.cpf"
             #cpf="ngModel"
-            mask="000.000.000-99" [showMaskTyped]="true" [dropSpecialCharacters]="false" 
+            mask="000.000.000-99" [showMaskTyped]="true" [dropSpecialCharacters]="false"
             (blur)="onCpfBlur()"
             required/>
         <div *ngIf="cpf.errors && (cpf.dirty || cpf.touched)" class="alert alert-danger">
@@ -24,7 +24,7 @@
     <div class="form-group">
         <label for="name">Nome</label>
         <input
-            id="name"  
+            id="name"
             type="text"
             name="name"
             class="form-control"
@@ -45,7 +45,7 @@
     <div class="form-group">
         <label for="lastname">Sobrenome</label>
         <input
-            id="lastname"  
+            id="lastname"
             type="text"
             name="lastname"
             class="form-control"

@@ -30,7 +30,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (this.formProduct.form.valid) 
+    if (this.formProduct.form.valid)
       this.createProduct(this.product);
   }
 

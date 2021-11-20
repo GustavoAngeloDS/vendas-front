@@ -36,7 +36,7 @@ export class EditClientComponent implements OnInit {
     );
   }
 
-  private updateClient(client: Client){          
+  private updateClient(client: Client){
     this.clientService.updateClient(client).subscribe(
       (client: Client) => {
         this.client = client;

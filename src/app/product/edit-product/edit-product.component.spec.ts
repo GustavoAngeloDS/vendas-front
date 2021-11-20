@@ -8,8 +8,8 @@ import { EditProductComponent } from './edit-product.component';
 
 describe('EditProductComponent', () => {
   let component: EditProductComponent;
-  let fixture: ComponentFixture<EditProductComponent>;  
-  
+  let fixture: ComponentFixture<EditProductComponent>;
+
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
 

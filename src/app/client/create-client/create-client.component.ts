@@ -23,11 +23,11 @@ export class CreateClientComponent implements OnInit {
     this.client = new Client();
   }
 
-  private createClient(client: Client): void {    
-    this.clientService.createClient(client).subscribe(() => 
+  private createClient(client: Client): void {
+    this.clientService.createClient(client).subscribe(() =>
       {
         this.router.navigate(['/clients']);
-      }, 
+      },
       (error: any) => {
         alert(error.error.message);
       }

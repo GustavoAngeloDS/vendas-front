@@ -43,7 +43,7 @@ describe('ClientService', () => {
       });
       httpClient = TestBed.inject(HttpClient);
       httpTestingController = TestBed.inject(HttpTestingController);
-  
+
       service = TestBed.inject(ClientService);
       httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
   });

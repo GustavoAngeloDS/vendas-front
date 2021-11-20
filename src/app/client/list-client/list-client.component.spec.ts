@@ -8,7 +8,7 @@ import { ListClientComponent } from './list-client.component';
 describe('ListClientComponent', () => {
   let component: ListClientComponent;
   let fixture: ComponentFixture<ListClientComponent>;
-  
+
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
 
@@ -21,7 +21,7 @@ describe('ListClientComponent', () => {
       ]
     })
     .compileComponents();
-    
+
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
