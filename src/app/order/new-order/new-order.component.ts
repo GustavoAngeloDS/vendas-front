@@ -94,7 +94,7 @@ export class NewOrderComponent implements OnInit {
     return true
   }
 
-  remove(id: any) {
+  removeItem(id: any) {
     this.order.items!.splice(id, 1);
   }
 

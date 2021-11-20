@@ -6,7 +6,7 @@ import { OrderListComponent } from './order-list.component';
 describe('OrderListComponent', () => {
   let component: OrderListComponent;
   let fixture: ComponentFixture<OrderListComponent>;
-
+  let title: HTMLElement;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule, RouterTestingModule ],
@@ -18,10 +18,16 @@ describe('OrderListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OrderListComponent);
     component = fixture.componentInstance;
+    title = fixture.nativeElement.querySelector('h1');
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display Pedidos', () => {
+    expect(title.textContent).toContain('Pedidos');
+  });
+
 });
