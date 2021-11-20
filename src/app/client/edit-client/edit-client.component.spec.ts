@@ -1,4 +1,3 @@
-/*
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { HttpClient } from '@angular/common/http';
@@ -35,5 +34,3 @@ describe('EditClientComponent', () => {
     fixture.detectChanges();
   });
 });
-
-*/

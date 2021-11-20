@@ -1,4 +1,3 @@
-/*
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewOrderComponent } from './new-order.component';
@@ -24,4 +23,3 @@ describe('NewOrderComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-*/

@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ListProductComponent } from './list-product.component';
 
 describe('ListProductComponent', () => {
-  /*let component: ListProductComponent;
+  let component: ListProductComponent;
   let fixture: ComponentFixture<ListProductComponent>;
   
   let httpClient: HttpClient;
@@ -33,5 +33,5 @@ describe('ListProductComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
+  });
 });
