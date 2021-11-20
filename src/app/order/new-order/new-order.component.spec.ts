@@ -1,3 +1,6 @@
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewOrderComponent } from './new-order.component';
@@ -8,7 +11,8 @@ describe('NewOrderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewOrderComponent ]
+      imports: [ HttpClientTestingModule, RouterTestingModule, FormsModule ],
+      declarations: [ NewOrderComponent ],
     })
     .compileComponents();
   });

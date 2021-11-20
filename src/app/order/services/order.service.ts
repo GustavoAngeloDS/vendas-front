@@ -1,6 +1,6 @@
 import { Product } from './../../shared/models/product.model';
 import { Client } from './../../shared/models/client.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Order } from 'src/app/shared/models/order.model';

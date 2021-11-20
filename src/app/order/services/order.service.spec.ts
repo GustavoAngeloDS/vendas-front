@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 
 import { OrderService } from './order.service';
 
@@ -10,17 +10,19 @@ describe('OrderService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
-    });
-    httpClient = TestBed.inject(HttpClient);
-    httpTestingController = TestBed.inject(HttpTestingController);
-    
-    service = TestBed.inject(OrderService);
-  });
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule],
+    providers: [OrderService]
+  }));
 
-  it('should be created', () => {
+    // httpClient = TestBed.inject(HttpClient);
+    // httpTestingController = TestBed.inject(HttpTestingController);
+
+    // service = TestBed.inject(OrderService);
+  // });
+
+  it('should be created service', () => {
+    const service: OrderService = TestBed.get(OrderService);
     expect(service).toBeTruthy();
   });
 });
