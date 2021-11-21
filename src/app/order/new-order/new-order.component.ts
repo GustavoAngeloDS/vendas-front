@@ -181,6 +181,7 @@ export class NewOrderComponent implements OnInit {
   }
 
   selectedClient($event: any) {
+    console.log("opa ",$event)
     let client: Client = {
       id: $event.item.id,
       name: $event.item.name,

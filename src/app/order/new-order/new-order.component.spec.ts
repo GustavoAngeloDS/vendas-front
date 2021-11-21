@@ -257,4 +257,28 @@ describe('NewOrderComponent', () => {
     let isAlreadyInList = component.isItemAlreadyInList(dummyItem)
     expect(isAlreadyInList).toBeTrue()
   });
+
+  it('selectedClient() add selected client to the order', () => {
+    const selectedClient = {
+      item:{
+        id:5,
+        cpf:"02730404222",
+        name:"Daniel",
+        lastname:"Santos"
+      }
+    }
+    component.selectedClient(selectedClient)
+    expect(component.order.client).toEqual(selectedClient.item)
+  });
+
+  it('formatClient() should return client input suggestions formatted', () => {
+    const dummyClient = {
+      name:"Daniel",
+      lastname:"Santos",
+      cpf:"02730404222"
+    }
+    let formattedClient = component.formatClient(dummyClient)
+    expect(formattedClient).toEqual(`${dummyClient.name} ${dummyClient.lastname} - ${dummyClient.cpf}`)
+  });
+
 });

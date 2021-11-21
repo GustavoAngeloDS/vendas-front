@@ -258,5 +258,12 @@ describe('OrderEditComponent', () => {
     expect(isAlreadyInList).toBeTrue()
   });
 
-
+  it('formatProduct() should return product input suggestions formatted', () => {
+    const dummyProduct = {
+        id: 1,
+        description: "Macbook Pro 16"
+    }
+    let formattedProduct = component.formatProduct(dummyProduct)
+    expect(formattedProduct).toEqual(`${dummyProduct.id} - ${dummyProduct.description}`)
+  });
 });
