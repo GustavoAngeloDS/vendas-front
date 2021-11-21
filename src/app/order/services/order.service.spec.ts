@@ -1,3 +1,4 @@
+import { Order } from 'src/app/shared/models/order.model';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { HttpClient, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
@@ -18,6 +19,13 @@ describe('OrderService', () => {
     service = TestBed.inject(OrderService);
     httpMock = TestBed.inject(HttpTestingController);
   });
+
+  const dummyOrder: Order = {
+    id:22,
+    date: new Date(),
+    items:[{qtdade:1,product:{id:1,description:"Macbook Pro 16"}}],
+    client:{ id:5, cpf: "02730404222", name:"Daniel", lastname: "Santos"}
+  }
 
   afterEach(() => {
     httpMock.verify();
@@ -64,36 +72,17 @@ describe('OrderService', () => {
   });
 
   it('findById() should return order by id', () => {
-    const dummyOrder = {
-      data: [
-        {"id":9,
-        "date":"17/11/2021 01:13",
-        "items":[{"qtdade":1,"product":{"id":1,"description":"Macbook Pro 16"}}],
-        "client":{"id":5,"cpf":"02730404222","name":"Daniel","lastname":"Santos"}
-        }
-      ]
-    }
-    const id = dummyOrder.data[0].id
-    service.findById(id)
+    service.findById(9)
     .subscribe((res: any) => {
       expect(res).toEqual(dummyOrder);
     });
-    const req = httpMock.expectOne(`${apiUrl}/orders/${id}`);
+    const req = httpMock.expectOne(`${apiUrl}/orders/${9}`);
     expect(req.request.method).toBe('GET');
     req.flush(dummyOrder);
   });
 
   it('findByCpf() should order by client cpf', () => {
-    const dummyOrder = {
-      data: [
-        {"id":9,
-        "date":"17/11/2021 01:13",
-        "items":[{"qtdade":1,"product":{"id":1,"description":"Macbook Pro 16"}}],
-        "client":{"id":5,"cpf":"02730404222","name":"Daniel","lastname":"Santos"}
-        }
-      ]
-    }
-    const cpf = dummyOrder.data[0].client.cpf
+    const cpf = '02730404222'
     service.findByCpf(cpf)
     .subscribe((res: any) => {
       expect(res).toEqual(dummyOrder);
@@ -151,6 +140,47 @@ describe('OrderService', () => {
     const req = httpMock.expectOne(`${apiUrl}/products/search/${dummyText}`);
     expect(req.request.method).toBe('GET');
     req.flush(dummyProducts);
+  });
+
+  it('delete() should delete order', () => {
+    let succeeded = false;
+    let body: string | undefined
+
+    const dummyOrder: Order = {
+        id:9,
+        date: new Date(),
+        items:[{qtdade:1,product:{id:1,description:"Macbook Pro 16"}}],
+        client:{ id:5, cpf: "02730404222", name:"Daniel", lastname: "Santos"}
+    }
+    service.delete(dummyOrder)
+    .subscribe((res: any) => {
+      succeeded = true
+      body = res
+    });
+    const req = httpMock.expectOne(`${apiUrl}/orders/`);
+    req.flush({body: undefined});
+    expect(req.request.method).toBe('DELETE');
+    expect(succeeded).toBeTrue()
+  });
+
+  it('update() should update order', () => {
+    service.update(dummyOrder)
+    .subscribe((res: any) => {
+      expect(res).toEqual(dummyOrder)
+    });
+    const req = httpMock.expectOne(`${apiUrl}/orders`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(dummyOrder);
+  });
+
+  it('save() should save order', () => {
+    service.save(dummyOrder)
+    .subscribe((res: any) => {
+      expect(res).toEqual(dummyOrder)
+    });
+    const req = httpMock.expectOne(`${apiUrl}/orders`);
+    expect(req.request.method).toBe('POST');
+    req.flush(dummyOrder);
   });
 
 });

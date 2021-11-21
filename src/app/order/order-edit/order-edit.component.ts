@@ -106,7 +106,6 @@ export class OrderEditComponent implements OnInit {
   }
 
   addItem($event: any) {
-    console.log("evento ", $event)
     let orderItem: OrderItem = { product: $event.item, qtdade: 1 }
     let isIn = this.isItemAlreadyInList(orderItem)
     if (isIn) {
