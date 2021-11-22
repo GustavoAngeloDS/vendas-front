@@ -9,6 +9,8 @@ describe('OrderListComponent', () => {
   let component: OrderListComponent;
   let fixture: ComponentFixture<OrderListComponent>;
   let title: HTMLElement;
+  let httpClient: HttpClient;
+  let httpTestingController: HttpTestingController;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule, RouterTestingModule ],
