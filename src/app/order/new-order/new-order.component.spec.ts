@@ -284,13 +284,14 @@ describe('NewOrderComponent', () => {
   });
 
   it('formatClient() should return client input suggestions formatted', () => {
-    const dummyClient = {
+    const dummyClient = {s
       name:"Daniel",
       lastname:"Santos",
       cpf:"02730404222"
     }
     let formattedClient = component.formatClient(dummyClient)
-    expect(formattedClient).toEqual(`${dummyClient.name} ${dummyClient.lastname} - ${dummyClient.cpf}`)
-  });
+    expect(formattedClient).toEqual(`${dummyClient.name} ${du
+
+});
 
 });

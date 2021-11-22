@@ -280,3 +280,6 @@ describe('OrderEditComponent', () => {
     expect(formattedProduct).toEqual(`${dummyProduct.id} - ${dummyProduct.description}`)
   });
 });
+
+});
+
