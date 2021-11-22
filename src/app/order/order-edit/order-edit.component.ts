@@ -101,7 +101,7 @@ export class OrderEditComponent implements OnInit {
     return true
   }
 
-  remove(id: any) {
+  removeItem(id: any) {
     this.order.items!.splice(id, 1);
   }
 
@@ -147,7 +147,7 @@ export class OrderEditComponent implements OnInit {
       tap(() => this.searching = false),
   )
 
-  formatter = (x: { id: number, description: string }) => `${x.id} - ${x.description}`;
+  formatProduct = (x: { id: number, description: string }) => `${x.id} - ${x.description}`;
 
   navigateOnSuccess() {
     this.router.navigate(['/orders']);
