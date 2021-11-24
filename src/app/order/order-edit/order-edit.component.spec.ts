@@ -13,7 +13,7 @@ describe('OrderEditComponent', () => {
 
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ OrderEditComponent ],
@@ -275,3 +275,4 @@ describe('OrderEditComponent', () => {
     expect(formattedProduct).toEqual(`${dummyProduct.id} - ${dummyProduct.description}`)
   });
 });
+
