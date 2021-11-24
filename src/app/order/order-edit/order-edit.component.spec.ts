@@ -2,18 +2,15 @@ import { OrderItem } from './../../shared/models/order.model';
 import { Order } from 'src/app/shared/models/order.model';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
-
+import { HttpClient } from '@angular/common/http';
 import { OrderEditComponent } from './order-edit.component';
 
 describe('OrderEditComponent', () => {
   let component: OrderEditComponent;
   let fixture: ComponentFixture<OrderEditComponent>;
 
-  
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   
@@ -28,14 +25,12 @@ describe('OrderEditComponent', () => {
     })
     .compileComponents();
 
-    httpClient = TestBed.inject(HttpClient);
-    httpTestingController = TestBed.inject(HttpTestingController);
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(OrderEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should create', () => {
@@ -280,6 +275,3 @@ describe('OrderEditComponent', () => {
     expect(formattedProduct).toEqual(`${dummyProduct.id} - ${dummyProduct.description}`)
   });
 });
-
-});
-

@@ -2,11 +2,9 @@ import { Order } from 'src/app/shared/models/order.model';
 import { OrderItem } from './../../shared/models/order.model';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
-
+import { HttpClient } from '@angular/common/http';
 import { NewOrderComponent } from './new-order.component';
 
 describe('NewOrderComponent', () => {
@@ -27,14 +25,12 @@ describe('NewOrderComponent', () => {
     })
     .compileComponents();
 
-    httpClient = TestBed.inject(HttpClient);
-    httpTestingController = TestBed.inject(HttpTestingController);
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(NewOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should create', () => {
@@ -284,14 +280,14 @@ describe('NewOrderComponent', () => {
   });
 
   it('formatClient() should return client input suggestions formatted', () => {
-    const dummyClient = {s
+    const dummyClient = {
       name:"Daniel",
       lastname:"Santos",
       cpf:"02730404222"
     }
     let formattedClient = component.formatClient(dummyClient)
-    expect(formattedClient).toEqual(`${dummyClient.name} ${du
+    expect(formattedClient).toEqual(`${dummyClient.name} ${dummyClient.lastname} - ${dummyClient.cpf}`);
+  });
 
 });
 
-});
