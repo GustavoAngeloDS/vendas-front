@@ -18,15 +18,13 @@ describe('OrderListComponent', () => {
     })
     .compileComponents();
 
-    httpClient = TestBed.inject(HttpClient);
-    httpTestingController = TestBed.inject(HttpTestingController);
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(OrderListComponent);
     component = fixture.componentInstance;
     title = fixture.nativeElement.querySelector('h1');
     fixture.detectChanges();
+
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should create', () => {
@@ -39,4 +37,3 @@ describe('OrderListComponent', () => {
 
 });
 
-//});

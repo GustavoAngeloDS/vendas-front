@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Product } from 'src/app/shared';
-import { ModalProductComponent } from '..';
-import { ProductService } from '../services';
+import { ProductService } from '../services/product.service';
+import { ModalProductComponent } from '../modal-product/modal-product.component';
 
 @Component({
   selector: 'app-list-product',

@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
-import { of } from 'rxjs';
 import { Client } from 'src/app/shared';
 
 import { ClientService } from './client.service';
@@ -8,7 +7,6 @@ import { ClientService } from './client.service';
 describe('ClientService', () => {
   let service: ClientService;
 
-  let httpClientSpy:{ get: jasmine.Spy };
   let httpMock: HttpTestingController;
 
   const API_URL = 'http://localhost:8080/clients';
@@ -41,9 +39,7 @@ describe('ClientService', () => {
       });
 
       httpMock = TestBed.inject(HttpTestingController);
-  
       service = TestBed.inject(ClientService);
-      httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
   });
 
   it('should be created', () => {
@@ -51,8 +47,6 @@ describe('ClientService', () => {
   });
 
   it('should get all clients', () => {
-    httpClientSpy.get.and.returnValue(of(expectedClients));
-
     service.getClients().subscribe(
       clients => {
         expect(clients).toEqual(expectedClients);
@@ -78,8 +72,9 @@ describe('ClientService', () => {
 
   it('getClients should return 500', () => {
     service.getClients().subscribe(
-      clients => {
-        expect(clients).toEqual([]);
+      () => {}, error => {
+        expect(error.status).toBe(500);
+        expect(error.statusText).toBe('Bad request');
       }
     );
 
@@ -89,8 +84,6 @@ describe('ClientService', () => {
   });
 
   it('should get client by id', () => {
-    httpClientSpy.get.and.returnValue(of(expectedClients[0]));
-
     service.getClient(1).subscribe(
       client => {
         expect(client).toEqual(expectedClients[0]);
@@ -104,8 +97,9 @@ describe('ClientService', () => {
 
   it('getClient by id should return 404', () => {
     service.getClient(4).subscribe(
-      client => {
-        expect(client).toEqual({});
+      () => {}, error => {
+        expect(error.status).toBe(404);
+        expect(error.statusText).toBe('Client not found');
       }
     );
 
@@ -135,8 +129,9 @@ describe('ClientService', () => {
 
   it('should not create client and return 404', () => {
     service.createClient({}).subscribe(
-      client => {
-        expect(client).toEqual({});
+      () => {}, error => {
+        expect(error.status).toBe(404);
+        expect(error.statusText).toBe('An error ocurred while creating client.');
       }
     );
 
@@ -173,8 +168,9 @@ describe('ClientService', () => {
     }
     
     service.updateClient(updateClient).subscribe(
-      client => {
-        expect(client).toEqual({});
+      () => {}, error => {
+        expect(error.status).toBe(404);
+        expect(error.statusText).toBe('Client not found');
       }
     );
 
@@ -199,10 +195,20 @@ describe('ClientService', () => {
   });
 
   it('should not delete client and return 404 when client not found', () => {
-    service.deleteClient({}).subscribe();
+    //service.deleteClient({}).subscribe();
+    service.deleteClient({}).subscribe(
+      () => {}, error => {
+        expect(error.status).toBe(404);
+        expect(error.statusText).toBe('Client not found');
+      }
+    );
 
     const deleteRequest = httpMock.expectOne(API_URL);
     expect(deleteRequest.request.method).toBe('DELETE');
     deleteRequest.flush('error', { status: 404, statusText: 'Client not found' });
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 });

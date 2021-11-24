@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/shared';
-import { ProductService } from '../services';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-edit-product',

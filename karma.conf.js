@@ -14,6 +14,8 @@ module.exports = function (config) {
     ],
     client: {
       jasmine: {
+        random: false,
+        clearContext: false
         //timeoutInterval: 2000
         // you can add configuration options for Jasmine here
         // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
