@@ -51,7 +51,7 @@ export class ListProductComponent implements OnInit {
           this.products = this.products.filter((p) => p.id !== product.id);
         },
         (error) => {
-          alert(error.message);
+            alert(error.status == 403? error.error : error.message);            
         }
       );
     }
